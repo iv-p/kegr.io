@@ -1,0 +1,13 @@
+syntax = "proto3";
+package merkle;
+option go_package = "kegr.io/protobuf/model/merkle";
+
+import "model/merkle/leaf.proto";
+
+message Node {
+    Node parent = 1;
+    Node left = 2;
+    Node right = 3;
+    Leaf leaf = 4;
+    bytes hash = 5;
+}

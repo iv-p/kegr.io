@@ -1,0 +1,49 @@
+syntax = "proto3";
+package server;
+option go_package = "kegr.io/protobuf/server/storage";
+
+import "model/storage/state/state.proto";
+import "model/storage/server/server_info.proto";
+import "server/storage/external.proto";
+
+
+service Internal {
+	rpc Ping (PingRequest) returns (PingResponse) {}
+	rpc Register (RegisterRequest) returns (RegisterResponse) {}
+	rpc GetState (GetStateRequest) returns (GetStateResponse) {}
+	rpc GetPeers (GetPeersRequest) returns (GetPeersResponse) {}
+
+	rpc GetLiquid (GetLiquidRequest) returns (GetLiquidResponse) {}
+}
+
+message PingRequest {
+	string id = 1;
+}
+
+message PingResponse {
+	bytes state = 1;
+	int64 timestamp = 2;
+}
+
+message RegisterRequest {
+    string id = 1;
+    string address = 2;
+}
+
+message RegisterResponse {
+	string id = 1;
+	string response = 2;
+	repeated server.ServerInfo others = 3;
+}
+
+message GetStateRequest {}
+
+message GetStateResponse {
+	state.State state = 1;
+}
+
+message GetPeersRequest {}
+
+message GetPeersResponse {
+	repeated ServerInfo peers = 1;
+}

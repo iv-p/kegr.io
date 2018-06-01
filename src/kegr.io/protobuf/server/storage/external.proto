@@ -1,0 +1,107 @@
+syntax = "proto3";
+package server;
+option go_package = "kegr.io/protobuf/server/storage";
+
+import "model/storage/liquid/liquid.proto";
+import "model/storage/keg/keg.proto";
+
+
+service External {
+	rpc CreateLiquid (CreateLiquidRequest) returns (CreateLiquidResponse) {}
+	rpc GetLiquid (GetLiquidRequest) returns (GetLiquidResponse) {}
+	rpc UpdateLiquid (UpdateLiquidRequest) returns (UpdateLiquidResponse) {}
+	rpc UpdateLiquidOptions (UpdateLiquidOptionsRequest) returns (UpdateLiquidOptionsResponse) {}
+	rpc DeleteLiquid (DeleteLiquidRequest) returns (DeleteLiquidResponse) {}
+
+	rpc CreateKeg (CreateKegRequest) returns (CreateKegResponse) {}
+	rpc GetKeg (GetKegRequest) returns (GetKegResponse) {}
+	rpc GetKegs (GetKegsRequest) returns (GetKegsResponse) {}
+	rpc GetKegLiquids (GetKegLiquidsRequest) returns (GetKegLiquidsResponse) {}
+	rpc UpdateKegOptions (UpdateKegOptionsRequest) returns (UpdateKegOptionsResponse) {}
+	rpc DeleteKeg (DeleteKegRequest) returns (DeleteKegResponse) {}
+}
+
+message CreateLiquidRequest {
+	string kegId = 1;
+	liquid.Liquid liquid = 2;
+}
+
+message CreateLiquidResponse {}
+
+message GetLiquidRequest {
+	string kegId = 1;
+	string liquidId = 2;
+}
+
+message GetLiquidResponse {
+	liquid.Liquid liquid = 1;
+}
+
+message UpdateLiquidRequest {
+	string kegId = 1;
+	string liquidId = 2;
+	liquid.Liquid liquid = 3;
+}
+
+message UpdateLiquidResponse {}
+
+message UpdateLiquidOptionsRequest {
+	string kegId = 1;
+	string liquidId = 2;
+	liquid.Options options = 3;
+}
+
+message UpdateLiquidOptionsResponse {}
+
+message DeleteLiquidRequest {
+	string kegId = 1;
+	string liquidId = 2;
+}
+
+message DeleteLiquidResponse {}
+
+
+message CreateKegRequest {
+	string kegId = 1;
+	keg.Options options = 2;
+}
+
+message CreateKegResponse {
+	string kegID = 1;
+}
+
+message GetKegRequest {
+	string kegId = 1;
+}
+
+message GetKegResponse {
+	keg.Options options = 1;
+}
+
+message GetKegsRequest {
+}
+
+message GetKegsResponse {
+	map<string, keg.Info> kegs = 1;
+}
+
+message GetKegLiquidsRequest {
+	string kegId = 1;
+}
+
+message GetKegLiquidsResponse {
+	repeated liquid.Info liquids = 1;
+}
+
+message UpdateKegOptionsRequest {
+	string kegId = 1;
+	keg.Options options = 2;
+}
+
+message UpdateKegOptionsResponse {}
+
+message DeleteKegRequest {
+	string kegId = 1;
+}
+
+message DeleteKegResponse {}

@@ -1,0 +1,5 @@
+FROM alpine:3.7
+
+COPY ./build/cerberus ./opt/cerberus
+
+CMD ./opt/cerberus

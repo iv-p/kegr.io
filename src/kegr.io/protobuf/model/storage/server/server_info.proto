@@ -1,0 +1,10 @@
+syntax = "proto3";
+package server;
+
+option go_package = "kegr.io/protobuf/model/storage/server";
+
+
+message ServerInfo {
+	string ID = 1;
+	string address = 2;
+}

@@ -1,0 +1,11 @@
+syntax = "proto3";
+package merkle;
+option go_package = "kegr.io/protobuf/model/merkle";
+
+
+message Content {
+    bytes ID = 1;
+    bytes hash = 2;
+    int64 lastUpdated = 3;
+    bool deleted = 4;
+}

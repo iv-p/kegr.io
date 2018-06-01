@@ -1,0 +1,19 @@
+version: '3'
+
+volumes:
+  build:
+    driver: local
+
+services:
+  unit-test:
+    build: 
+      context: ../../
+      dockerfile: docker/dev/Dockerfile.unit-test
+    volumes:
+      - ../../build:/build
+      - ../../build/report:/report
+
+  build:
+    build:
+      context: ../../
+      dockerfile: docker/dev/Dockerfile.build

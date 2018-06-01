@@ -1,0 +1,2 @@
+FROM cerberus:base
+CMD ["go", "test", "./...", "-coverprofile=/report/coverage.out"]

@@ -1,0 +1,16 @@
+FROM golang:alpine
+RUN apk --no-cache add curl git openssh nodejs
+# Install go dep
+RUN curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
+
+COPY scripts/go-dep.sh /usr/local/bin/go-dep.sh
+RUN chmod +x /usr/local/bin/go-dep.sh
+
+WORKDIR /go/src/cerberus
+
+VOLUME /build
+VOLUME /report
+
+ENTRYPOINT ["/usr/local/bin/go-dep.sh"]
+
+COPY src /go/src

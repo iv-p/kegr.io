@@ -1,0 +1,9 @@
+syntax = "proto3";
+package state;
+option go_package = "kegr.io/protobuf/model/storage/state";
+
+import "model/storage/keg/keg.proto";
+
+message State {
+    map<string, keg.Keg> kegs = 1;
+}

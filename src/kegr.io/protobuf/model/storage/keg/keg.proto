@@ -1,0 +1,37 @@
+syntax = "proto3";
+package keg;
+option go_package = "kegr.io/protobuf/model/storage/keg";
+
+import "model/merkle/tree.proto";
+
+message Keg {
+    string id = 1;
+    Options options = 2;
+    bool deleted = 3;
+    int64 lastUpdated = 4;
+    merkle.Tree tree = 5;
+}
+
+message Info {
+    string id = 1;
+    bool deleted = 2;
+    int64 lastUpdated = 3;
+    string name = 4;
+    string path = 5;
+    int64 cache = 6;
+    bool gzip = 7;
+}
+
+message KegFile {
+    string id = 1;
+    Options options = 2;
+    bool deleted = 3;
+    int64 lastUpdated = 4;
+}
+
+message Options {
+    string name = 1;
+    string path = 2;
+    int64 cache = 3;
+    bool gzip = 4;
+}

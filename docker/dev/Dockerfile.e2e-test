@@ -1,0 +1,13 @@
+FROM node:carbon-alpine
+WORKDIR /e2e
+
+COPY scripts/yarn.sh /usr/local/bin/yarn.sh
+RUN chmod +x /usr/local/bin/yarn.sh
+
+VOLUME /report
+
+ENTRYPOINT ["yarn.sh"]
+
+CMD ["npm", "test"]
+
+COPY e2e /e2e

@@ -1,0 +1,12 @@
+.vscode/
+target/
+bin/
+build/
+vendor/
+pkg/
+e2e/node_modules/
+src/github.com/
+src/golang.org/
+src/gopkg.in/
+src/google.golang.org/
+src/kegr.io/protobuf/**/*.go

@@ -1,0 +1,10 @@
+syntax = "proto3";
+package merkle;
+option go_package = "kegr.io/protobuf/model/merkle";
+
+import "model/merkle/node.proto";
+
+message Tree {
+    Node rootNode = 1;
+    int64 depth = 2;
+}

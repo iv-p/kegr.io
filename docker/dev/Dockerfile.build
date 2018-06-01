@@ -1,0 +1,2 @@
+FROM cerberus:base
+CMD ["go", "build", "-o", "/build/cerberus", "."]

@@ -1,0 +1,5 @@
+bin/*
+pkg/*
+target/*
+src/cerberus/vendor/
+e2e/node_modules
